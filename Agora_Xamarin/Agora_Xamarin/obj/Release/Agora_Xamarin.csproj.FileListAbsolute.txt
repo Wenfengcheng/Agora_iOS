@@ -1,0 +1,3 @@
+/Users/highview/Projects/Agora_Xamarin/Agora_Xamarin/bin/Release/Agora_Xamarin.dll
+/Users/highview/Projects/Agora_Xamarin/Agora_Xamarin/obj/Release/Agora_Xamarin.csproj.CoreCompileInputs.cache
+/Users/highview/Projects/Agora_Xamarin/Agora_Xamarin/obj/Release/Agora_Xamarin.dll

@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{05D35DE5-0FB4-43AB-BD35-C7DCEC71F586}|Default">
+  <MonoDevelop.Ide.ItemProperties.Agora__Test PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.FCD8129D-4777-4731-BBB6-8B85C0AB6E68" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Agora_Test/ViewController.cs">
+    <Files>
+      <File FileName="Agora_Test/ViewController.cs" Line="54" Column="48" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/highview/Projects/Agora_Xamarin/Agora_Test/ViewController.cs" relfile="Agora_Test/ViewController.cs" line="101" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

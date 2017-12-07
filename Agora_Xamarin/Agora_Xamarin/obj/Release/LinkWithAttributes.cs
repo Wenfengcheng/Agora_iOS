@@ -1,0 +1,1 @@
+[assembly: ObjCRuntime.LinkWith ("AgoraRtcEngineKit.framework", IsCxx = true, SmartLink = true, ForceLoad = true, Frameworks = "CoreTelephony CoreMedia CoreMotion VideoToolbox AudioToolbox AVFoundation", LinkerFlags = "-lc++ -lresolv")]
