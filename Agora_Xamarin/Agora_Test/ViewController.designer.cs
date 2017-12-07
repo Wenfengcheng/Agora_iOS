@@ -37,6 +37,14 @@ namespace Agora_Test
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView remoteVideoMutedIndicator { get; set; }
 
+        [Action ("DidClickMuteButton:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void DidClickMuteButton (UIKit.UIButton sender);
+
+        [Action ("DidClickVideoMuteButton:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void DidClickVideoMuteButton (UIKit.UIButton sender);
+
         [Action ("HangUpButtonClicked:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void HangUpButtonClicked (UIKit.UIButton sender);

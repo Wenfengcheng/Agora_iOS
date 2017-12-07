@@ -60,7 +60,9 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="mute.png"/>
                                         <state key="selected" image="unmute.png"/>
-                                        <connections/>
+                                        <connections>
+                                            <action selector="DidClickVideoMuteButton:" destination="BYZ-38-t0r" id="813" eventType="touchUpInside"/>
+                                        </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eG9-NI-ab8" userLabel="controlButtonSpacer">
                                         <rect key="frame" x="87" y="0.0" width="27" height="80"/>
@@ -73,7 +75,9 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="cameraoff.png"/>
                                         <state key="selected" image="cameraoff copy.png"/>
-                                        <connections/>
+                                        <connections>
+                                            <action selector="DidClickMuteButton:" destination="BYZ-38-t0r" id="814" eventType="touchUpInside"/>
+                                        </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F31-wD-Lc7" userLabel="controlButtonSpacer">
                                         <rect key="frame" x="174" y="0.0" width="27" height="80"/>
@@ -190,7 +194,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="videoMuteButton" width="372" height="372"/>
         <image name="videoMuteButtonSelected" width="372" height="372"/>
         <image name="videoMutedIndicator" width="153" height="129"/>
         <image name="cameramute.png" width="180" height="240"/>

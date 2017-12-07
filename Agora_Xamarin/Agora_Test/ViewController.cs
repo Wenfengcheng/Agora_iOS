@@ -65,6 +65,21 @@ namespace Agora_Test
             });
         }
 
+        partial void DidClickVideoMuteButton(UIButton sender)
+        {
+            sender.Selected = !sender.Selected;
+            this.agoraKit.MuteLocalAudioStream(sender.Selected);
+        }
+
+        partial void DidClickMuteButton(UIButton sender)
+        {
+            sender.Selected = !sender.Selected;
+            this.agoraKit.MuteLocalVideoStream(sender.Selected);
+            this.localVideo.Hidden = sender.Selected;
+            this.localVideoMutedBg.Hidden = !sender.Selected;
+            this.localVideoMutedIndicator.Hidden = !sender.Selected;
+        }
+
         partial void HangUpButtonClicked(UIButton sender)
         {
             this.agoraKit.LeaveChannel((obj) => {
