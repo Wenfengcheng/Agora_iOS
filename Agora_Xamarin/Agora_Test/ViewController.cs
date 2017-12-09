@@ -15,27 +15,33 @@ namespace Agora_Test
         public UIImageView LocalVideoMutedBg { get; set; }
         public UIImageView LocalVideoMutedIndicator { get; set; }
 
-        protected ViewController(IntPtr handle) : base(handle)
+        public ViewController(IntPtr handle) : base(handle)
         {
-            // Note: this .ctor should not contain any initialization logic.
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            InitializeAgoraEngine();
             this.LocalVideo = localVideo;
             this.RemoteVideo = remoteVideo;
             this.ControlButtons = controlButtons;
             this.RemoteVideoMutedIndicator = remoteVideoMutedIndicator;
             this.LocalVideoMutedBg = localVideoMutedBg;
             this.LocalVideoMutedIndicator = localVideoMutedIndicator;
+            HideVideoMuted();
             InitializeAgoraEngine();
             SetUpVideo();
             SetUpLocalVideo();
             JoinChannel();
             // Perform any additional setup after loading the view, typically from a nib.
         }
+
+        public override void DidReceiveMemoryWarning()
+        {
+            base.DidReceiveMemoryWarning();
+            // Release any cached data, images, etc that aren't in use.
+        }
+
         private void InitializeAgoraEngine()
         {
             agoraKit = AgoraRtcEngineKit.SharedEngineWithAppId(AgoraKey, new AgoraRtcEngineXamarinDelegate(this));
@@ -43,7 +49,7 @@ namespace Agora_Test
 
         private void SetUpVideo()
         {
-            agoraKit.EnableLocalVideo(true);
+            agoraKit.EnableVideo();
             agoraKit.SetVideoProfile(AgoraRtcVideoProfile.AgoraRtc_VideoProfile_360P, false);
         }
 
@@ -58,13 +64,24 @@ namespace Agora_Test
 
         private void JoinChannel()
         {
-            agoraKit.JoinChannelByKey("channelKey", "demoChannel", "channelInfo", 0, (arg1, arg2, arg3) =>
+            agoraKit.JoinChannelByKey(null, "demoChannel1", null, 0, (sid, uid, elapsed) =>
             {
                 agoraKit.SetEnableSpeakerphone(true);
                 UIApplication.SharedApplication.IdleTimerDisabled = true;
             });
         }
 
+        private void LeaveChannel()
+        {
+            agoraKit.LeaveChannel(null);
+            HideControlButtons();  // Tutorial Step 8
+            UIApplication.SharedApplication.IdleTimerDisabled = false;
+            remoteVideo.RemoveFromSuperview();
+            localVideo.RemoveFromSuperview();
+            agoraKit = null;
+        }
+
+        //是否禁音
         partial void DidClickVideoMuteButton(UIButton sender)
         {
             sender.Selected = !sender.Selected;
@@ -82,7 +99,8 @@ namespace Agora_Test
 
         partial void HangUpButtonClicked(UIButton sender)
         {
-            this.agoraKit.LeaveChannel((obj) => {
+            this.agoraKit.LeaveChannel((obj) =>
+            {
                 HideControlButtons();
                 UIApplication.SharedApplication.IdleTimerDisabled = false;
                 this.remoteVideo.RemoveFromSuperview();
@@ -91,17 +109,17 @@ namespace Agora_Test
             });
         }
 
+        public void HideVideoMuted()
+        {
+            remoteVideoMutedIndicator.Hidden = true;
+            localVideoMutedBg.Hidden = true;
+            localVideoMutedIndicator.Hidden = true;
+        }
         public void HideControlButtons()
         {
             this.controlButtons.Hidden = true;
         }
 
-
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
-        }
 
 
         public class AgoraRtcEngineXamarinDelegate : AgoraRtcEngineDelegate
@@ -122,13 +140,18 @@ namespace Agora_Test
                 videoCanvas.RenderMode = AgoraRtcRenderMode.Adaptive;
                 _viewController.agoraKit.SetupRemoteVideo(videoCanvas);
 
-                if (_viewController.remoteVideo.Hidden)
-                    _viewController.remoteVideo.Hidden = false;
+
             }
 
             public override void RtcEngine(AgoraRtcEngineKit engine, nuint uid, AgoraRtcUserOfflineReason reason)
             {
                 _viewController.remoteVideo.Hidden = true;
+            }
+
+            public override void RtcEngineWithDidVideoMuted(AgoraRtcEngineKit engine, bool muted, nuint uid)
+            {
+                _viewController.remoteVideo.Hidden = muted;
+                _viewController.remoteVideoMutedIndicator.Hidden = !muted;
             }
         }
     }

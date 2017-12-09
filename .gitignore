@@ -1,0 +1,8 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/Agora_Xamarin/Agora_Test/obj/iPhoneSimulator/Debug
+/Agora_Xamarin/.vs/Agora_Xamarin/v15/Server/sqlite3
+/Agora_Xamarin/Agora_Xamarin/obj/Debug
+/Agora_Xamarin/.vs/Agora_Xamarin/v15
