@@ -626,8 +626,9 @@ namespace Agora_iOS
         int EnableMainQueueDispatch(bool enabled);
 
         // -(int)joinChannelByKey:(NSString *)channelKey channelName:(NSString *)channelName info:(NSString *)info uid:(NSUInteger)uid joinSuccess:(void (^)(NSString *, NSUInteger, NSInteger))joinSuccessBlock;
+
         [Export("joinChannelByKey:channelName:info:uid:joinSuccess:")]
-        int JoinChannelByKey(string channelKey, string channelName, string info, nuint uid, Action<NSString, nuint, nint> joinSuccessBlock);
+        int JoinChannelByKey([NullAllowed]string channelKey, string channelName, [NullAllowed]string info, nuint uid, Action<NSString, nuint, nint> joinSuccessBlock);
 
         // -(int)leaveChannel:(void (^)(AgoraRtcStats *))leaveChannelBlock;
         [Export("leaveChannel:")]
@@ -643,11 +644,11 @@ namespace Agora_iOS
 
         // -(int)enableVideo;
         [Export("enableVideo")]
-        int EnableVideo { get; }
+        int EnableVideo();
 
         // -(int)disableVideo;
         [Export("disableVideo")]
-        int DisableVideo { get; }
+        int DisableVideo();
 
         // -(int)enableLocalVideo:(BOOL)enabled;
         [Export("enableLocalVideo:")]
@@ -1000,4 +1001,6 @@ namespace Agora_iOS
         [Export("pushExternalVideoFrame:")]
         bool PushExternalVideoFrame(AgoraVideoFrame frame);
     }
+
+
 }
