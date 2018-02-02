@@ -1,8 +1,40 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
-################################################################################
+﻿#Autosave files
+*~
 
-/Agora_Xamarin/Agora_Test/obj/iPhoneSimulator/Debug
-/Agora_Xamarin/.vs/Agora_Xamarin/v15/Server/sqlite3
-/Agora_Xamarin/Agora_Xamarin/obj/Debug
-/Agora_Xamarin/.vs/Agora_Xamarin/v15
+#build
+[Oo]bj/
+[Bb]in/
+packages/
+TestResults/
+
+# globs
+Makefile.in
+*.DS_Store
+*.sln.cache
+*.suo
+*.cache
+*.pidb
+*.userprefs
+*.usertasks
+config.log
+config.make
+config.status
+aclocal.m4
+install-sh
+autom4te.cache/
+*.user
+*.tar.gz
+tarballs/
+test-results/
+Thumbs.db
+
+#Mac bundle stuff
+*.dmg
+*.app
+
+#resharper
+*_Resharper.*
+*.Resharper
+
+#dotCover
+*.dotCover
